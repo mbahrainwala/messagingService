@@ -60,7 +60,7 @@
                             <outputDirectory>target/classes/static</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>${project.basedir}/../custmesui/build</directory>
+                                    <directory>${project.basedir}/../ui/build</directory>
                                     <filtering>false</filtering>
                                 </resource>
                             </resources>

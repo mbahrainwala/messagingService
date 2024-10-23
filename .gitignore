@@ -3,3 +3,5 @@
 /service/service.iml
 /service/target/
 /ui/target/
+/ui/node_modules/
+/ui/build/
