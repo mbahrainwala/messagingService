@@ -1,3 +1,5 @@
 /.idea/
 /ui/ui.iml
 /service/service.iml
+/service/target/
+/ui/target/
