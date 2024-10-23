@@ -5,3 +5,5 @@
 /ui/target/
 /ui/node_modules/
 /ui/build/
+/ui/node/
+/ui/package-lock.json
