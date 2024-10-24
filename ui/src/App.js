@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import {Root} from "./frameComponents/Root"
+import {ListMessages} from "./components/ListMessages";
+import {Message} from "./components/Message";
+
+const serverURI= process.env.NODE_ENV==='development'?'http://127.0.0.1:9090/':'/';
 
 function App() {
+  const globalData= {
+      serverURI
+  };
+
+  const router= createBrowserRouter([
+    {path:"/", element:<Root globalData={globalData}/>,
+        children:[
+            {index:true, element:<ListMessages globalData={globalData}/>},
+            {path:"message/", element:<Message globalData={globalData}/>}
+        ]
+    }
+  ]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <RouterProvider router={router}/>
     </div>
   );
 }

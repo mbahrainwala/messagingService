@@ -1,7 +1,32 @@
+import {useEffect, useState} from 'react';
+import axios from 'axios';
+import {Link as RouterLink, Link} from 'react-router-dom'
+import {restCall} from "../utils/RestCallUtil";
+
 export const ListMessages = props => {
+    const [apiListMessages, setApiListMessages] = useState({});
+
+    useEffect(() => {
+        if(apiListMessages.status === undefined){
+            restCall('GET', `${props.globalData.serverURI}api`, setApiListMessages);
+        }
+    },[apiListMessages])
+
     return (
         <>
-            Here is the list.
+            <Link to="message/">Message</Link>
+            <br/>Here is the list.<br/>
+            <>
+                {(apiListMessages.status!==undefined)?(<>
+                    {(apiListMessages.status==200)?(<ul>
+                        {apiListMessages.data.map(row=>(
+                            <li key={row}>
+                                {row}
+                            </li>
+                        ))}
+                    </ul>):(<>Error loading data</>)}
+                </>):(<>Loading Data</>)}
+            </>
         </>
     );
 }
