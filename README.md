@@ -7,3 +7,9 @@ Service to broadcast public messages.
 3. Run `mvn clean install -Ph2db` to build the jar file. 
 4. Run the application from the command prompt using `java -jar .\service\target\service-0.0.1-SNAPSHOT.jar --spring.profiles.active=h2db` command
 5. NOTE once the application terminates all data will be lost.
+
+# To create a docker image.
+1. Open the command prompt or terminal
+2. Switch to the root of the project.
+3. Run `mvn clean install -Ph2db` to build the jar file for in memory DB or `mvn clean install` to use mssql
+4. Run `docker build -t latest/messaging_service .` to create a docker image.
