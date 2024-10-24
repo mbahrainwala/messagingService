@@ -1,6 +1,5 @@
 import {useEffect, useState} from 'react';
-import axios from 'axios';
-import {Link as RouterLink, Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {restCall} from "../utils/RestCallUtil";
 
 export const ListMessages = props => {
@@ -10,7 +9,7 @@ export const ListMessages = props => {
         if(apiListMessages.status === undefined){
             restCall('GET', `${props.globalData.serverURI}api`, setApiListMessages);
         }
-    },[apiListMessages])
+    },[apiListMessages, props.globalData.serverURI])
 
     return (
         <>
@@ -18,7 +17,7 @@ export const ListMessages = props => {
             <br/>Here is the list.<br/>
             <>
                 {(apiListMessages.status!==undefined)?(<>
-                    {(apiListMessages.status==200)?(<ul>
+                    {(apiListMessages.status===200)?(<ul>
                         {apiListMessages.data.map(row=>(
                             <li key={row}>
                                 {row}

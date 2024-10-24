@@ -26,16 +26,16 @@ export const restCall = async (method, endpoint, setApiRet, data) =>{
                 setApiRet(apiValue);
             }
         }).catch((error) => {
+            let errorStr;
             if(error!=null && error!==undefined && error.response!==null){
-                let errorStr;
                 if(error.status !== undefined)
                     errorStr = setApiData(error.status, {error: `${error.response.data.message}`});
                 else
                     errorStr = setApiData(404, {error: "Error Connecting to server"});
             }else if(setApiRet != null){
-                const errorStr = setApiData(404, {error: 'Error Connecting to server'})
-                setApiRet(errorStr);
+                setApiData(404, {error: 'Error Connecting to server'})
             }
+            setApiRet(errorStr);
         }
     );
 }
