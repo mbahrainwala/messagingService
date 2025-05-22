@@ -19,8 +19,8 @@ export const ListMessages = props => {
                 {(apiListMessages.status!==undefined)?(<>
                     {(apiListMessages.status===200)?(<ul>
                         {apiListMessages.data.map(row=>(
-                            <li key={row}>
-                                {row}
+                            <li key={row.id}>
+                                {row.title}, {row.description}
                             </li>
                         ))}
                     </ul>):(<>Error loading data</>)}
